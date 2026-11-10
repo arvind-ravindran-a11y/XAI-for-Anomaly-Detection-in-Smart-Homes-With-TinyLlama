@@ -2,8 +2,6 @@
 
 A Random Forest flags suspicious activity in smart-home sensor data, SHAP shows which sensors drove each flag, and a small local LLM (TinyLlama-1.1B-Chat) turns that into a plain-language explanation. The results are shown in a Streamlit dashboard.
 
-Built by **Akshidha Unni** and **Arvind Ravindran** for SYSC 5809 (Internet of Things) at Carleton University, Fall 2025.
-
 <img width="1916" height="868" alt="Dashboard: anomalies detected on a chosen date" src="https://github.com/user-attachments/assets/740a2326-e486-4b59-9a6c-194e41bab1b6" />
 
 ## Results
@@ -18,7 +16,7 @@ Model: `RandomForestClassifier(n_estimators=200, class_weight="balanced")`, stra
 
 ## How it works
 
-1. **Data:** the [CASAS Aruba](https://zenodo.org/records/17180309) smart-home dataset. We used the last 100,000 sensor events (29 May to 11 June 2011) from 39 motion (M), door (D) and temperature (T) sensors.
+1. **Data:** the [CASAS Aruba](https://zenodo.org/records/17180309) smart-home dataset. We used the last 100,000 sensor events from 39 motion (M), door (D) and temperature (T) sensors.
 2. **Features:** events are aggregated into 18,871 one-minute windows, with one column per sensor plus hour, day of week and a night flag.
 3. **Labels:** CASAS has no intrusion labels, so a window is labelled anomalous when there is motion while the annotated activity is *Sleeping* or *Leave_Home*. That gives 1,009 anomalous windows (5.3%).
 4. **Detection:** a class-balanced Random Forest predicts anomalies and a confidence score for every window.
@@ -44,7 +42,6 @@ The Streamlit dashboard is shown in the screenshots above and is not set up as a
 
 - The labels come from a rule, not from real intrusions, so the model learns to reproduce that rule from sensor and time features.
 - The train/test split is random across consecutive minutes, so neighbouring windows can appear in both sets. A time-based split would give a more conservative estimate.
-- Only one home (Aruba) and 13 days of data are used.
 
 ## Acknowledgements
 
