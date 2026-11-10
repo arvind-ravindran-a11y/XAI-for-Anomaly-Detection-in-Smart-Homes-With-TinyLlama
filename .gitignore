@@ -1,0 +1,14 @@
+# Raw CASAS data: too large for GitHub (aruba.txt is ~61 MB). Download from the link in README.
+new_labeled_data/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
